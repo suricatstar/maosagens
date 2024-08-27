@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block 'title' %}
+    Login
+{% endblock %}
+
+{% block 'body' %}
+<div class="container-fluid bg-dark text-white p-3">
+    <h1>Login de Pacientes</h1>
+</div>
+
+<div class="container">
+    <br>
+    {% if status == '1' %}
+    <div class="alert alert-danger" role="alert">
+        Email ou senha inválidos
+    </div>
+    {% endif %}
+
+    {% if status == '2' %}
+    <div class="alert alert-danger" role="alert">
+        faça login antes de tentar acessar o sistema
+    </div>
+    {% endif %}
+    
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+
+        <div class="col-md">
+            <h1>faça login</h1>
+            <hr>
+
+            <form action="{% url 'valida_login' %}" method="POST"> {% csrf_token %}
+                
+                <label for="">Email</label>
+                <input class="form-control" type="text" placeholder="Email..." name="email" id="">
+
+                <label for="">Senha</label>
+                <input class="form-control" type="password" placeholder="Senha..." name="senha" id="">
+
+                <input class="btn btn-info btn-mg mt-1" type="submit" value="Logar">
+
+                <a href="{%url 'cadastrar_paciente' %}" class="btn btn-warning mt-1">Cadastro</a>
+            </form>
+        </div>
+
+        <div class="col-md-3">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
