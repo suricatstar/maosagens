@@ -1,9 +1,30 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block 'title %}
     Home
 {% endblock 'title %}
 
+{% block 'head' %}
+<link rel="stylesheet" href="{% static "home/css/home.css" %}">
+{% endblock 'head' %}
+
+
 {% block 'body' %}
-    configure a home a partir daqui
+    <header class="container-fluid p-3 mb-2 bg-info text-white d-flex flex-row justify-content-between">
+    <h1>Maosagens</h1>
+    <nav class="font-weight-bold" id="naveHome">
+        <ul class="nav d-flex flex-row justify-content-between">
+            <li class="m-1 nav-item"> <a href="#" class="nav-link text-light">login</a></li>
+
+            <li class="m-1 nav-item" > <a href="#" class="font-weight-bold nav-link text-light">cadastro</a></li>
+        </ul>
+    </nav>
+    </header>
+    <main>
+
+    </main>
+    <footer>
+
+    </footer>
 {% endblock 'body' %}
