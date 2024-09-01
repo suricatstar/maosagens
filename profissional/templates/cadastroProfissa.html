@@ -4,63 +4,56 @@
 {% endblock 'title' %} 
 
 {% block 'body' %}
-<div class="container-fluid bg-dark text-white p-3">
-  <h1>Cadastro de Profissional</h1>
+<div class="container-fluid bg-info text-white p-3">
+  <h1>Maosagens</h1>
 </div>
+<main class="flex-fill">
+  <div class="container">
+    <br>
 
-<div class="container">
-  <br>
-
-  {% if status == '0' %}
-  <div class="alert alert-success" role="alert">
-    Cadastro realizado com sucesso
-  </div>
-  {% endif %} 
+    <div class="row w-50 container-fluid my-4 p-2 mx-auto border rounded shadow bg-light">
+      {% if status == '0' %}
+      <div class="alert alert-success" role="alert">
+        Cadastro realizado com sucesso
+      </div>
+      {% endif %} 
+      
+      {% if status == '1' %}
+      <div class="alert alert-danger" role="alert">
+        Nome e email não podem estar vazios
+      </div>
+      {% endif %} 
   
-  {% if status == '1' %}
-  <div class="alert alert-danger" role="alert">
-    Nome e email não podem estar vazios
-  </div>
-  {% endif %} 
+      {% if status == '2' %}
+        <div class="alert alert-danger" role="alert">
+          Profissional já está cadastrado nesta especialidade
+        </div>
+      {% endif %} 
+      
+      {% if status == '3' %}
+        <div class="alert alert-danger" role="alert">
+          telefone não pode ter menos que 10 digitos 
+        </div>
+      {% endif %} 
+      
+      {% if status == '4' %}
+        <div class="alert alert-danger" role="alert">Erro interno do sistema</div>
+      {% endif %}
 
-  {% if status == '2' %}
-    <div class="alert alert-danger" role="alert">
-        Sua senha dever ter pelo menos 8 caracteres
-    </div>
-  {% endif %} 
-  
-  {% if status == '3' %}
-    <div class="alert alert-danger" role="alert">
-        Profissional já existente no sistema
-    </div>
-  {% endif %} 
-  
-  {% if status == '4' %}
-    <div class="alert alert-danger" role="alert">Erro interno do sistema</div>
-  {% endif %}
+      <div class="col-md">
+          <h1>Cadastre o Profissional</h1>
+          <hr>
 
-  <div class="row">
+          <form action="{% url 'valida_profissional' %}" method="POST"> {% csrf_token %}
 
-    <div class="col-md-3">
-    </div>
+              {{form.as_table}}
+              
+              <input class="btn btn-info mt-2 text-white" type="submit" value="Cadastrar">
+          </form>
+      </div>
 
-    <div class="col-md">
-        <h1>Cadastre-se</h1>
-        <hr>
-
-        <form action="{% url 'valida_profissional' %}" method="POST"> {% csrf_token %}
-
-            {{form.as_table}}
-            
-            <input class="btn btn-primary m-3" type="submit" value="Cadastrar">
-        </form>
-    </div>
-
-    <div class="col-md-3">
     </div>
 
   </div>
-
-</div>
-
+</main>
 {% endblock 'body' %}

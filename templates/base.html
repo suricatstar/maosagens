@@ -14,12 +14,21 @@
     {% block 'head' %}{% endblock 'head' %}
 
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
+
 
     {% block 'body' %}{% endblock 'body' %}
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <footer class=" p-3 mt-auto bg-info text-white d-flex flex-row justify-content-center">
+      <div class="container text-center">
+        <p>&copy; 2024 Clínica de Fisioterapia. Todos os direitos reservados.</p>
+      </div>
+    </footer>
 
   </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>

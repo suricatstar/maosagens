@@ -1,54 +1,59 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block 'title' %}
   Cadastro 
 {% endblock 'title' %} 
 
-{% block 'body' %}
-<div class="container-fluid bg-dark text-white p-3">
-  <h1>Cadastro de Pacientes</h1>
-</div>
+{% block 'head' %}
+  <link rel="stylesheet" href="{% static "paciente/css/cadastro.css" %}">
+{% endblock 'head' %}
 
+{% block 'body' %}
+<header>
+  <div class="container-fluid bg-info text-white p-3">
+    <h1>Maosagens</h1>
+  </div>
+</header>
+
+<main class="flex-fill">
 <div class="container">
   <br>
 
-  {% if status == '0' %}
-  <div class="alert alert-success" role="alert">
-    Cadastro realizado com sucesso
-  </div>
-  {% endif %} 
+  <div class="row w-50 container-fluid my-4 p-2 mx-auto border rounded shadow bg-light">
+    {% if status == '0' %}
+      <div class="alert alert-success" role="alert">
+        Cadastro realizado com sucesso
+      </div>
+    {% endif %} 
   
-  {% if status == '1' %}
-  <div class="alert alert-danger" role="alert">
-    Nome e email não podem estar vazios
-  </div>
-  {% endif %} 
+    {% if status == '1' %}
+      <div class="alert alert-danger" role="alert">
+        Nome e email não podem estar vazios
+      </div>
+    {% endif %} 
 
-  {% if status == '2' %}
-    <div class="alert alert-danger" role="alert">
-        Sua senha dever ter pelo menos 8 caracteres
-    </div>
-  {% endif %} 
+    {% if status == '2' %}
+      <div class="alert alert-danger" role="alert">
+          Sua senha dever ter pelo menos 8 caracteres
+      </div>
+    {% endif %} 
 
-  {% if status == '3' %}
-    <div class="alert alert-danger" role="alert">
-        as senhas não batem
-    </div>
-  {% endif %} 
+    {% if status == '3' %}
+      <div class="alert alert-danger" role="alert">
+          as senhas não batem
+      </div>
+    {% endif %} 
   
-  {% if status == '4' %}
-    <div class="alert alert-danger" role="alert">
-        Usuário já existe no sistema
-    </div>
-  {% endif %} 
+    {% if status == '4' %}
+      <div class="alert alert-danger" role="alert">
+          Usuário já existe no sistema
+      </div>
+    {% endif %} 
   
-  {% if status == '5' %}
-    <div class="alert alert-danger" role="alert">Erro interno do sistema</div>
-  {% endif %}
-
-  <div class="row">
-
-    <div class="col-md-3">
-    </div>
+    {% if status == '5' %}
+      <div class="alert alert-danger" role="alert">Erro interno do sistema</div>
+    {% endif %}
 
     <div class="col-md">
         <h1>Cadastre-se</h1>
@@ -68,18 +73,17 @@
             <input class="form-control" type="password" placeholder="Senha..." name="confirma_senha" id="">
 
 
-            <input class="btn btn-info btn-mg mt-1" type="submit" value="Enviar">
+            <input class="btn btn-success btn-mg mt-2 text-white" type="submit" value="Enviar">
 
-            <a href="{%url 'login_paciente' %}" class="btn btn-warning mt-1">Login</a>
+            <a href="{%url 'login_paciente' %}" class="btn btn-info mt-2 text-white">Login</a>
             
         </form>
     </div>
-
-    <div class="col-md-3">
-    </div>
-
   </div>
+ 
+  
 
 </div>
+</main>
 
 {% endblock 'body' %}

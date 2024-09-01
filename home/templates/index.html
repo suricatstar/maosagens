@@ -15,16 +15,19 @@
     <h1>Maosagens</h1>
     <nav class="font-weight-bold" id="naveHome">
         <ul class="nav d-flex flex-row justify-content-between">
-            <li class="m-1 nav-item"> <a href="#" class="nav-link text-light">login</a></li>
+            <li class="m-1 nav-item"> <a href="{% url "cadastrar_paciente" %}" class="nav-link text-light">login</a></li>
 
-            <li class="m-1 nav-item" > <a href="#" class="font-weight-bold nav-link text-light">cadastro</a></li>
+            <li class="m-1 nav-item" > <a href="{% url "login_paciente" %}" class="font-weight-bold nav-link text-light">cadastro</a></li>
         </ul>
     </nav>
     </header>
-    <main>
 
+    <main class="d-flex flex-column align-items-center justify-content-center mx-2 my-auto">
+        <div class="container w-75 border rounded p-3 shadow">
+
+            <h2 class="text-left fs-2 text-info">Revitalize seu movimento, restaure sua vida.</h2>
+
+            <p class="text-justify fs-4" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis totam maiores odio aperiam sequi ab, delectus voluptatibus hic ratione! Magni porro amet explicabo tenetur. Eius exercitationem eveniet fuga aliquid dolore.</p>
+        </div>
     </main>
-    <footer>
-
-    </footer>
 {% endblock 'body' %}
