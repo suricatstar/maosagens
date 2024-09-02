@@ -3,17 +3,18 @@ from django.http import HttpResponse
 from hashlib import sha256
 
 from paciente.models import Paciente
+from registros.models import Registradores
 
 # Create your views here.
 def Cadastro(request):
-    if request.session.get('usuario'):
-        return redirect('/livro/home')
+    if request.session.get('paciente'):
+        return redirect('/agenda/opcoes_agenda/')
     status = request.GET.get('status')
     return render(request, 'cadastro.html',{'status': status})
 
 def Login(request):
-    if request.session.get('usuario'):
-        return redirect('/livro/home')
+    if request.session.get('paciente'):
+        return redirect('/agenda/opcoes_agenda/')
     status = request.GET.get('status')
     return render(request, 'login.html', {'status': status})
 
@@ -59,6 +60,10 @@ def valida_login(request):
     email = request.POST.get('email')
     senha = request.POST.get('senha')
     
+    registradores = Registradores.objects.filter(email=email)
+    if registradores:
+        return redirect('/registros/ver_registros/')
+    
     senha = sha256(senha.encode()).hexdigest()
     
     paciente = Paciente.objects.filter(email = email).filter(senha = senha)
@@ -68,8 +73,8 @@ def valida_login(request):
     
     elif len(paciente) > 0:
         request.session['paciente'] = paciente[0].id
-        return HttpResponse("joia") 
-        # return redirect('/livro/home')
+        
+        return redirect('/agenda/opcoes_agenda/')
 
 def sair(request):
     request.session.flush()

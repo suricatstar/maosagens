@@ -25,22 +25,14 @@ def valida_profissional(request):
             telefone = form.cleaned_data['telefone']
             
             
-            profissional_existente = Profissional.objects.filter(nome=nome).first()
+            profissional_existente = Profissional.objects.filter(nome=nome, area_especializacao=especialidades).first()
             
             
             if len(nome.strip()) == 0 or len(email.strip()) == 0:
                 return redirect('/profissional/cadastra_profissional/?status=1')
             
             if profissional_existente:
-                
-                especialidades_existentes = profissional_existente.area_especializacao.all()
-                
-                ids_existentes = set(especialidade.id for especialidade in especialidades_existentes)
-                ids_selecionadas = set(especialidade.id for especialidade in especialidades)
-                
-                
-                if ids_existentes.intersection(ids_selecionadas):
-                    return redirect('/profissional/cadastra_profissional/?status=2')
+                return redirect('/profissional/cadastra_profissional/?status=2')
             
             if len(telefone) < 10:
                 return redirect('/profissional/cadastra_profissional/?status=3')
@@ -49,17 +41,16 @@ def valida_profissional(request):
                 profissional = Profissional(
                     nome= nome,
                     email = email,
+                    area_especializacao=especialidades,
                     telefone = telefone
                 )
                 
                 profissional.save()
                 
-                
-                profissional.area_especializacao.set(especialidades)
-                
                 return redirect('/profissional/cadastra_profissional/?status=0')
             
-            except:
+            except Exception as e:
+                print(e)
                 return redirect('/profissional/cadastra_profissional/?status=4')
                 
                 

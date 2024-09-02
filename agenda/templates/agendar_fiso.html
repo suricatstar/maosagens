@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block 'title' %} 
+    Agendar
+{% endblock 'title' %}
+
+{% block 'body' %}
+
+<header>
+    <div class="container-fluid d-flex  justify-content-between bg-info text-white p-3">
+        <h1>Maosagens</h1>
+
+       {% include 'partials/barra_nav.html' %} 
+
+       <a href="{% url 'sair' %}" class="btn btn-danger d-flex text-center align-items-center">Sair</a> 
+    </div>
+    
+</header>
+
+<main class="flex-fill">
+    <div class="row w-50 container-fluid my-4 p-2 mx-auto border rounded shadow bg-light">
+
+    {% if status == '0' %}
+      <div class="alert alert-success" role="alert">
+        Agendamento realizado com sucesso
+      </div>
+    {% endif %} 
+  
+    {% if status == '1' %}
+      <div class="alert alert-danger" role="alert">
+        Não é possivel agenda no passado
+      </div>
+    {% endif %} 
+
+    {% if status == '2' %}
+      <div class="alert alert-danger" role="alert">
+         Agende em algum dia útil
+      </div>
+    {% endif %} 
+
+    {% if status == '3' %}
+      <div class="alert alert-danger" role="alert">
+          Não temos profissionais disponiveis ou já estão ocupados
+      </div>
+    {% endif %} 
+  
+    {% if status == '4' %}
+      <div class="alert alert-danger" role="alert">
+          Erro interno do sistema
+      </div>
+    {% endif %}
+
+        <div class="col-md">
+            <h1>Agendar Consulta</h1>
+            <hr>
+            <form method="POST" action="{% url 'valida_agenda' %}"> {% csrf_token %}
+
+                {{form}}
+
+                <input class="btn btn-success btn-mg mt-2 text-white" type="submit" value="Agendar">
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock 'body' %}

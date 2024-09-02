@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block 'title %}
+{% block 'title' %}
     Home
-{% endblock 'title %}
+{% endblock 'title' %}
 
 {% block 'head' %}
 <link rel="stylesheet" href="{% static "home/css/home.css" %}">
@@ -15,9 +15,9 @@
     <h1>Maosagens</h1>
     <nav class="font-weight-bold" id="naveHome">
         <ul class="nav d-flex flex-row justify-content-between">
-            <li class="m-1 nav-item"> <a href="{% url "cadastrar_paciente" %}" class="nav-link text-light">login</a></li>
+            <li class="m-1 nav-item"> <a href="{% url "login_paciente" %}" class="nav-link text-light">login</a></li>
 
-            <li class="m-1 nav-item" > <a href="{% url "login_paciente" %}" class="font-weight-bold nav-link text-light">cadastro</a></li>
+            <li class="m-1 nav-item" > <a href="{% url "cadastrar_paciente" %}" class="font-weight-bold nav-link text-light">cadastro</a></li>
         </ul>
     </nav>
     </header>

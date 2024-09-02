@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block 'title' %} 
+    Agendar
+{% endblock 'title' %}
+
+{% block 'body' %}
+
+<header>
+    <div class="container-fluid d-flex  justify-content-between bg-info text-white p-3">
+        <h1>Maosagens</h1>
+
+       {% include 'partials/barra_nav.html' %} 
+
+       <a href="{% url 'sair' %}" class="btn btn-danger d-flex text-center align-items-center">Sair</a> 
+    </div>
+    
+</header>
+
+<main class="flex-fill d-flex flex-row align-items-center justify-content-center">
+
+    <div class="container w-50 border rounded p-3 m-4 shadow">
+        <h1 class='fs-5'>Minha Agenda</h1>
+        <hr>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Profissional</th>
+                    <th>Especialidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for agendamento in agendamentos %}
+                <tr>
+                    <td>{{ agendamento.data }}</td>
+                    <td>{{ agendamento.get_hora_display }}</td>
+                    <td>{{ agendamento.profissional }}</td>
+                    <td>{{ agendamento.especialidade }}</td>
+                </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">Você não tem agendamentos.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    
+</main>
+
+{% endblock 'body' %}

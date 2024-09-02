@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block 'title' %} 
+    agenda
+{% endblock 'title' %}
+
+{% block 'body' %}
+    <header>
+        <div class="container-fluid d-flex  justify-content-between bg-info text-white p-3">
+            <h1>Maosagens</h1>
+
+            <a href="{% url 'sair' %}" class="btn btn-danger d-flex text-center align-items-center">Sair</a> 
+        </div>
+    </header>
+
+    <main class="flex-fill d-flex flex-row align-items-center">
+        <div class="container w-50 border rounded p-3 m-4 shadow">
+            <h2 class="text-left fs-3 text-info">Agendar Consulta</h2>
+
+            <p class="text-justify fs-5" >
+                Agende aqui sua aula de fisioterapia
+            </p>
+
+            <a href="{% url "valida_agenda" %}" class="btn btn-info mt-2 text-white" >Agendar</a>
+        </div> 
+
+        <div class="container w-50 border rounded p-3 m-4 shadow">
+            <h2 class="text-left fs-3 text-info">Ver Agenda</h2>
+
+            <p class="text-justify fs-5" >
+                Veja aqui as suas sessões marcadas.
+            </p>
+
+            <a href="{% url "ver_agenda" %}" class="btn btn-info mt-2 text-white" >Ver Agenda</a>
+        </div>
+    </main>
+
+
+{% endblock 'body' %}

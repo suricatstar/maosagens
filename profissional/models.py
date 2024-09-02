@@ -3,13 +3,7 @@ from django.db import models
 # Create your models here.
 class Especialidade(models.Model):
     
-    especialidade_choices = {
-        ('Acupuntura', 'Acupuntura'),
-        ('F.Aquática', 'F.Aquática'),
-        ('F.Cardiovascular', 'F.Cardiovascular'),
-        ('F.Esportiva', 'F.Esportiva'),
-    }
-    especialidade = models.CharField(max_length=100,choices=especialidade_choices, default='Acuputura')
+    especialidade = models.CharField(max_length=100)
     
     def __str__(self):
         return self.especialidade
@@ -17,7 +11,7 @@ class Especialidade(models.Model):
 class Profissional(models.Model):
 
     nome = models.CharField(max_length=255)
-    area_especializacao = models.ManyToManyField(Especialidade)
+    area_especializacao = models.ForeignKey(Especialidade, on_delete=models.DO_NOTHING)
     telefone = models.CharField(max_length=20)
     
     email = models.EmailField()

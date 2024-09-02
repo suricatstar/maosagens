@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'paciente',
     'profissional',
     'home',
+    'agenda',
+    'registros',
 ]
 
 MIDDLEWARE = [

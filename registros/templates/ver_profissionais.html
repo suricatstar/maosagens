@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'title' %}
+    Profissionais
+{% endblock 'title'%}
+
+{% block 'body' %}
+<header>
+    <div class="container-fluid d-flex  justify-content-between bg-info text-white p-3">
+        <h1>Maosagens</h1>
+
+        {% include 'partials/regis_nav.html' %}
+
+        <a href="{% url 'sair' %}" class="btn btn-danger d-flex text-center align-items-center">Sair</a> 
+    </div>
+</header>
+
+<main class="flex-fill d-flex flex-row align-items-center">
+    <div class="container w-75 border rounded p-3 mx-auto shadow">
+        <h1 class='fs-5'>Pacientes</h1>
+        <hr>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Especialidade</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for profissional in profissionais %}
+                    <tr>
+                        <td>{{ profissional.id }}</td>
+                        <td>{{ profissional.nome }}</td>
+                        <td>{{ profissional.area_especializacao }}</td>
+                        <td>{{ profissional.telefone }}</td>
+                        <td>{{ profissional.email }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">Você não nenhum Profissional.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</main>
+{% endblock 'body' %}

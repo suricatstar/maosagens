@@ -4,9 +4,16 @@
 {% endblock 'title' %} 
 
 {% block 'body' %}
-<div class="container-fluid bg-info text-white p-3">
-  <h1>Maosagens</h1>
-</div>
+<header>
+  <div class="container-fluid d-flex  justify-content-between bg-info text-white p-3">
+      <h1>Maosagens</h1>
+
+      {% include 'partials/regis_nav.html' %}
+
+      <a href="{% url 'sair' %}" class="btn btn-danger d-flex text-center align-items-center">Sair</a> 
+  </div>
+</header>
+
 <main class="flex-fill">
   <div class="container">
     <br>
