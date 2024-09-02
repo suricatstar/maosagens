@@ -27,3 +27,5 @@ def ver_agendamentos(request):
     if request.method == "GET":
         agendamentos = Agendamento.objects.all()
         return render(request,'ver_agendamentos.html', {'agendamentos' : agendamentos})
+    
+# fazer a parte de edição dos campos a nivel adm

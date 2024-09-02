@@ -82,4 +82,4 @@ def valida_agenda(request):
              
 
 
-     
+   # lembra de fazer a parte de anotações, creio que deva ser feito na parte de profissional.  
