@@ -40,7 +40,7 @@
                         <td>{{ agendamento.profissional }}</td>
                         <td>{{ agendamento.especialidade }}</td>
                         <td>{{ agendamento.data }}</td>
-                        <td>{{ agendamento.hora }}</td>
+                        <td>{{ agendamento.get_hora_display }}</td>
                     </tr>
                 {% empty %}
                     <tr>
