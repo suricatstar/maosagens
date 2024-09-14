@@ -8,10 +8,10 @@
 
     <title>{% block 'title' %}{% endblock 'title' %}</title>
 
+    {% block 'head' %}{% endblock 'head' %}
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
-    {% block 'head' %}{% endblock 'head' %}
 
   </head>
   <body class="d-flex flex-column min-vh-100">
@@ -21,14 +21,15 @@
 
 
     
-    <footer class=" p-3 mt-auto bg-info text-white d-flex flex-row justify-content-center">
+    <footer class=" p-2 mt-auto bg-info text-white d-flex flex-row justify-content-center">
       <div class="container text-center">
         <p>&copy; 2024 Clínica de Fisioterapia. Todos os direitos reservados.</p>
+        <p>&copy; Dev: Feito por Cauê Tamiarana</p>
       </div>
     </footer>
 
   </body>
-
+  <script src="{% static 'home/js/scripts.js' %}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
