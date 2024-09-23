@@ -1,31 +1,25 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-
+from django.views import View
+from django.views.generic import ListView
 from agenda.models import Agendamento
 from paciente.models import Paciente
 from profissional.models import Profissional
 
-# Create your views here.
-def ver_registros(request):
-    if request.method == "GET":
-        return render(request,'registro.html')
+class VerRegistrosView(View):
+    def get(self, request):
+        return render(request, 'registro.html')
 
+class VerPacienteView(ListView):
+    model = Paciente
+    template_name = 'ver_pacientes.html'
+    context_object_name = 'pacientes'
 
-def ver_paciente(request):
-    if request.method == "GET":
-        pacientes = Paciente.objects.all()
-        return render(request,'ver_pacientes.html', {'pacientes' : pacientes})
+class VerProfissionaisView(ListView):
+    model = Profissional
+    template_name = 'ver_profissionais.html'
+    context_object_name = 'profissionais'
 
-
-def ver_profissionais(request):
-    if request.method == "GET":
-        profissionais = Profissional.objects.all()
-        return render(request,'ver_profissionais.html', {'profissionais' : profissionais})
-
-
-def ver_agendamentos(request):
-    if request.method == "GET":
-        agendamentos = Agendamento.objects.all()
-        return render(request,'ver_agendamentos.html', {'agendamentos' : agendamentos})
-    
-# fazer a parte de edição dos campos a nivel adm
+class VerAgendamentosView(ListView):
+    model = Agendamento
+    template_name = 'ver_agendamentos.html'
+    context_object_name = 'agendamentos'

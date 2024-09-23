@@ -21,29 +21,23 @@
     <div class="row w-50 container-fluid my-4 p-2 mx-auto border rounded shadow bg-light">
       {% if status == '0' %}
       <div class="alert alert-success" role="alert">
-        Cadastro realizado com sucesso
+        registro realizado com sucesso
       </div>
       {% endif %} 
       
       {% if status == '1' %}
       <div class="alert alert-danger" role="alert">
-        Nome e email não podem estar vazios
+        O campo não pode estar vazios
       </div>
       {% endif %} 
   
       {% if status == '2' %}
         <div class="alert alert-danger" role="alert">
-          Profissional já está cadastrado nesta especialidade
+          Especialidade já está cadastrada no sistema
         </div>
       {% endif %} 
       
       {% if status == '3' %}
-        <div class="alert alert-danger" role="alert">
-          telefone não pode ter menos que 10 digitos 
-        </div>
-      {% endif %} 
-      
-      {% if status == '4' %}
         <div class="alert alert-danger" role="alert">Erro interno do sistema</div>
       {% endif %}
 
@@ -51,13 +45,13 @@
           <h1>Cadastre o Profissional</h1>
           <hr>
 
-          <form action="{% url 'cadastra_profissional' %}" method="POST"> {% csrf_token %}
+          <form action="{% url 'cadastra_especialidade' %}" method="POST"> {% csrf_token %}
 
               {{form.as_table}}
               
-              <input class="btn btn-info mt-2 text-white" type="submit" value="Cadastrar">
+              <input class="btn btn-info mt-2 text-white" type="submit" value="Registrar">
 
-              <a href="{%url 'cadastra_especialidade' %}" class="btn btn-success mt-2 text-white">Especialidade</a>
+              <a href="{%url 'cadastra_profissional' %}" class="btn btn-success mt-2 text-white">Profisisonal</a>
           </form>
       </div>
 

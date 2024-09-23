@@ -1,7 +1,8 @@
 from django.urls import path
-from . import views
+from .views import CadastraProfissionalView, cadastraEspecialidadeView
 
 urlpatterns = [
-    path('valida_profissional/', views.valida_profissional, name='valida_profissional'),
-    path('cadastra_profissional/', views.cadastra_profissional, name='cadastra_profissional'),
+    path('cadastra_profissional/', CadastraProfissionalView.as_view(), name='cadastra_profissional'),
+     path('cadastra_especialidade/', cadastraEspecialidadeView.as_view(), name='cadastra_especialidade')
+    
 ]

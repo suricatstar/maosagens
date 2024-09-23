@@ -15,4 +15,5 @@ class ProfissionalForm(forms.Form):
     
     telefone = forms.CharField(label="Telefone", required=False,widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Número...'}))
     
-    
+class EspecialidadeForm(forms.Form):
+    especialidade = forms.CharField(max_length=60,label="Especialidade",widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Especialidade...'}))
