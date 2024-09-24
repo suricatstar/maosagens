@@ -1,49 +1,72 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block 'title' %}
-    Pacientes
-{% endblock 'title'%}
-
-{% block 'body' %}
+{% extends "base.html" %} 
+{% load static %} 
+{% block 'title' %} Pacientes 
+{% endblock 'title'%} {% block 'body' %}
 <header>
-    <div class="container-fluid d-flex  justify-content-between bg-info text-white p-3">
-        <h1>Maossagens</h1>
+  <div
+    class="container-fluid d-flex justify-content-between bg-info text-white p-3"
+  >
+    <h1>Maossagens</h1>
 
-        {% include 'partials/regis_nav.html' %}
+    {% include 'partials/regis_nav.html' %}
 
-        <a href="{% url 'sair' %}" class="btn btn-danger d-flex text-center align-items-center">Sair</a> 
-    </div>
+    <a
+      href="{% url 'sair' %}"
+      class="btn btn-danger d-flex text-center align-items-center"
+      >Sair</a
+    >
+  </div>
 </header>
 
 <main class="flex-fill d-flex flex-row align-items-center">
-    <div class="container w-50 border rounded p-3 mx-auto shadow">
-        <h1 class='fs-5'>Pacientes</h1>
-        <hr>
+  <div class="container w-50 border rounded p-3 mx-auto shadow">
+    <h1 class="fs-5">Pacientes</h1>
+    <hr />
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for paciente in pacientes %}
-                    <tr>
-                        <td>{{ paciente.id }}</td>
-                        <td>{{ paciente.nome }}</td>
-                        <td>{{ paciente.email }}</td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="4">Você não tem pacientes.</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for paciente in pacientes %}
+        <tr>
+          <td>{{ paciente.id }}</td>
+          <td>{{ paciente.nome }}</td>
+          <td>{{ paciente.email }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4">Você não tem pacientes.</td>
+        </tr>
+        {% endfor %} 
+        
+      </tbody>
+    </table>
+    <div class="container d-flex justify-content-between">
+    
+        {% if page_obj.has_previous %}
+            <a class="btn btn-info mt-2 text-white" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% else %}
+            <span></span>
+        {% endif %}
+
+        {% if page_obj.has_previous %}
+            <p>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</p>
+        {% endif %}
+
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-info mt-2 text-white" href="?page={{ page_obj.next_page_number }}">Próximo</a>
+            
+        {% else %}
+        <span></span>    
+        {% endif %}
 
     </div>
+  </div>
 </main>
 {% endblock 'body' %}

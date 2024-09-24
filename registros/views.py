@@ -10,16 +10,19 @@ class VerRegistrosView(View):
         return render(request, 'registro.html')
 
 class VerPacienteView(ListView):
+    paginate_by = 6
     model = Paciente
     template_name = 'ver_pacientes.html'
     context_object_name = 'pacientes'
 
 class VerProfissionaisView(ListView):
+    paginate_by = 6
     model = Profissional
     template_name = 'ver_profissionais.html'
     context_object_name = 'profissionais'
 
 class VerAgendamentosView(ListView):
+    paginate_by = 6
     model = Agendamento
     template_name = 'ver_agendamentos.html'
     context_object_name = 'agendamentos'

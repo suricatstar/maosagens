@@ -38,7 +38,7 @@ class VerAgendaView(TemplateView):
 class ValidaAgendaView(FormView):
     template_name = 'agendar_fiso.html'
     form_class = AgendamentoForm
-    success_url = reverse_lazy('valida_agenda')  # Substitua pela URL adequada
+    success_url = reverse_lazy('valida_agenda') 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -65,7 +65,7 @@ class ValidaAgendaView(FormView):
         if data < date.today():
             return redirect('/agenda/valida_agenda/?status=1')
 
-        if data.weekday() in [5, 6]:  # Fins de semana
+        if data.weekday() in [5, 6]: 
             return redirect('/agenda/valida_agenda/?status=2')
 
         if not profissional_disponivel:
