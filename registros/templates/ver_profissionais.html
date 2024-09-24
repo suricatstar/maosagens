@@ -56,12 +56,12 @@
                 <span></span>
             {% endif %}
     
-            {% if page_obj.has_previous %}
+            {% if page_obj.has_previous and  page_obj.has_next %}
                 <p>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</p>
             {% endif %}
     
     
-            {% if page_obj.has_next %}
+            {% if page_obj.has_previous and page_obj.has_next %}
                 <a class="btn btn-info mt-2 text-white" href="?page={{ page_obj.next_page_number }}">Próximo</a>
                 
             {% else %}

@@ -58,7 +58,7 @@
                 <span></span>
             {% endif %}
     
-            {% if page_obj.has_previous %}
+            {% if page_obj.has_previous and page_obj.has_next %}
                 <p>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</p>
             {% endif %}
     
