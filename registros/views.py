@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView
@@ -14,6 +16,13 @@ class VerPacienteView(ListView):
     model = Paciente
     template_name = 'ver_pacientes.html'
     context_object_name = 'pacientes'
+    
+    def get_queryset(self):
+        filtro = self.request.GET.get('filtro')
+        if filtro:
+            return Paciente.objects.filter(nome__icontains=filtro)
+        else:
+            return Paciente.objects.all()
 
 class VerProfissionaisView(ListView):
     paginate_by = 6

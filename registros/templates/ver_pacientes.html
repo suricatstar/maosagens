@@ -23,6 +23,14 @@
     <h1 class="fs-5">Pacientes</h1>
     <hr />
 
+    <div>
+      <form class="d-flex flex-row gap-2" action="{% url "ver_paciente" %}" method="GET">
+        <input type="text" name="filtro" class="form-control" placeholder="Pesquise">
+
+        <input type="submit" value="filtrar" class="btn btn-outline-primary">
+      </form>
+    </div>
+
     <table class="table table-striped">
       <thead>
         <tr>
